@@ -147,7 +147,12 @@ ORDER BY Total_Sales DESC
 
 ### Question No. 8 Which Corporate Customer placed the most number of orders in 2009 – 2012? 
 ```SQL
-
+select top 1 Customer_Name, count (Order_ID) As Number_of_Order
+from [dbo].[KMS Sql Case Study]
+where Customer_Segment = 'Corporate' AND
+Order_Date between '2009-01-01' and '2012-12-31'
+group by Customer_Name
+order by Number_of_Order desc
 ```
 
 
@@ -194,4 +199,8 @@ Low-priority orders (e.g., Low or Not Specified) were shipped using slower but m
 I strongly recommend that the company target "Corporate" and "Small Business" customers with high-margin products or volume-based deals. There is a high margin on bulk purchase from this segment.
 
 
+## Contributions
+
+- I suggest the company looks deeply into overspending on shipping without proportionate return on investment
+- Another contribution I made for the company was to suggest for them to focus on marketing executive furniture and printing equipment like the Global Troy chairs and HP LaserJet printers because of its high revenue yielding capabilities.
 
