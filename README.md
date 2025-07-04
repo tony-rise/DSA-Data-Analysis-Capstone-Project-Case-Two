@@ -68,7 +68,7 @@ After a detailed breakdown of SQL queries entries, we arrived at the following r
 
 ## Question No. 1
 
-''' SQL
+```SQL
 FROM [dbo].[KMS Sql Case Study]
 GROUP BY Product_Category
 ORDER BY Total_Sales DESC
