@@ -66,13 +66,54 @@ This process involved the exploration of the Data Set provided to Apply the SQL 
 After a detailed breakdown of SQL queries entries, we arrived at the following results:
 
 
-## Question No. 1
+## Question No. 1 
+Which product category had the highest sales?
 
 ```SQL
 FROM [dbo].[KMS Sql Case Study]
 GROUP BY Product_Category
 ORDER BY Total_Sales DESC
 ```
+
+## Question No. 2a
+2. What are the Top 3 and Bottom 3 regions in terms of sales?
+
+```SQL
+SELECT top 3 Region, SUM(Sales) AS Total_Sales
+FROM [dbo].[KMS Sql Case Study]
+GROUP BY Region
+ORDER BY Total_Sales DESC
+```
+
+## Question No. 2B Bottom 3 regions in terms of sales?
+```SQL
+SELECT top 3 Region, SUM(Sales) AS Total_Sales
+FROM [dbo].[KMS Sql Case Study]
+GROUP BY Region
+ORDER BY Total_Sales ASC
+```
+
+## Question No. 3  What were the total sales of appliances in Ontario? 
+``` SQL
+SELECT SUM(Sales) AS Total_Appliance_Sales_Ontario
+FROM [dbo].[KMS Sql Case Study]
+WHERE Product_Sub_Category = 'Appliances'
+  AND Province = 'Ontario';
+```
+
+## Question No. 4 Advise the management of KMS on what to do to increase the revenue from the bottom 
+10 customers  
+```SQL
+select top 10 customer_name, sum (sales) as Revenue
+  from [dbo].[KMS Sql Case Study]
+  group by customer_name
+  order by Revenue asc
+```
+
+## ADVISE 
+- I firmly recommend complementary or higher-end products at checkout or through marketing emails.
+- Also to consider free shipping thresholds or more reliable shipping methods to low-value customers to boost customer satisfaction.
+
 
 
 
