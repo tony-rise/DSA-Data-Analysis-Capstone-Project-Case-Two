@@ -182,6 +182,16 @@ from [KMS Sql Case Study]
 group by Order_Priority, Ship_Mode
 ```
 
+## Explanation
+High-priority orders (e.g., Critical or High) were shipped using faster but more expensive methods like Express Air.
+
+Low-priority orders (e.g., Low or Not Specified) were shipped using slower but more economical methods like Delivery Truck.
+
+
+
+## Recommendations
+
+I strongly recommend that the company target "Corporate" and "Small Business" customers with high-margin products or volume-based deals. There is a high margin on bulk purchase from this segment.
 
 
 
