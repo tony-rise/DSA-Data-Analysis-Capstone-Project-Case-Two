@@ -188,9 +188,8 @@ group by Order_Priority, Ship_Mode
 ```
 
 ## Explanation
-High-priority orders (e.g., Critical or High) were shipped using faster but more expensive methods like Express Air.
-
-Low-priority orders (e.g., Low or Not Specified) were shipped using slower but more economical methods like Delivery Truck.
+Express Air was used for low and unspecified order priority. 
+To optimize shipping cost, I recommend the company to restict Express Air to Critical Order priority.
 
 
 
