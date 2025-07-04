@@ -65,8 +65,9 @@ This process involved the exploration of the Data Set provided to Apply the SQL 
 ## Results 
 After a detailed breakdown of SQL queries entries, we arrived at the following results:
 
+### Case Scenario One
 
-## Question No. 1 
+### Question No. 1 
 Which product category had the highest sales?
 
 ```SQL
@@ -75,7 +76,7 @@ GROUP BY Product_Category
 ORDER BY Total_Sales DESC
 ```
 
-## Question No. 2a
+### Question No. 2a
 2. What are the Top 3 and Bottom 3 regions in terms of sales?
 
 ```SQL
@@ -85,7 +86,7 @@ GROUP BY Region
 ORDER BY Total_Sales DESC
 ```
 
-## Question No. 2B Bottom 3 regions in terms of sales?
+### Question No. 2B Bottom 3 regions in terms of sales?
 ```SQL
 SELECT top 3 Region, SUM(Sales) AS Total_Sales
 FROM [dbo].[KMS Sql Case Study]
@@ -93,7 +94,7 @@ GROUP BY Region
 ORDER BY Total_Sales ASC
 ```
 
-## Question No. 3  What were the total sales of appliances in Ontario? 
+### Question No. 3  What were the total sales of appliances in Ontario? 
 ``` SQL
 SELECT SUM(Sales) AS Total_Appliance_Sales_Ontario
 FROM [dbo].[KMS Sql Case Study]
@@ -101,7 +102,7 @@ WHERE Product_Sub_Category = 'Appliances'
   AND Province = 'Ontario';
 ```
 
-## Question No. 4 Advise the management of KMS on what to do to increase the revenue from the bottom 
+### Question No. 4 Advise the management of KMS on what to do to increase the revenue from the bottom 
 10 customers  
 ```SQL
 select top 10 customer_name, sum (sales) as Revenue
@@ -110,10 +111,76 @@ select top 10 customer_name, sum (sales) as Revenue
   order by Revenue asc
 ```
 
-## ADVISE 
+### ADVISE 
 - I firmly recommend complementary or higher-end products at checkout or through marketing emails.
 - Also to consider free shipping thresholds or more reliable shipping methods to low-value customers to boost customer satisfaction.
 
+
+### Question No. 5 KMS incurred the most shipping cost using which shipping method? 
+```SQL
+SELECT top 1 ship_mode, SUM (shipping_cost) AS total_shipping_cost
+FROM [dbo].[KMS Sql Case Study]
+GROUP BY ship_mode 
+ORDER BY total_shipping_cost DESC
+```
+
+
+### Case Scenario Two
+
+### Question No. 6 Who are the most valuable customers, and what products or services do they typically 
+purchase? 
+```SQL
+SELECT TOP 5 Customer_Name, Product_Name, SUM(SALES) AS VALUABLE_CUSTOMERS FROM [KMS Sql Case Study]
+GROUP BY Customer_Name, Product_Name
+ORDER BY VALUABLE_CUSTOMERS DESC
+```
+
+
+### Question No. 7 Which small business customer had the highest sales? 
+``` SQL
+SELECT top 1 Customer_name, SUM(Sales) AS Total_Sales
+FROM [dbo].[KMS Sql Case Study]
+where Customer_Segment = 'small business'
+GROUP BY Customer_name
+ORDER BY Total_Sales DESC
+```
+
+### Question No. 8 Which Corporate Customer placed the most number of orders in 2009 – 2012? 
+```SQL
+
+```
+
+
+### Question No. 9 Which consumer customer was the most profitable one? 
+```SQL
+select top 1 Customer_Name, sum(profit) as [Most Profitable] from [KMS Sql Case Study]
+where Customer_Segment = 'Consumer'
+group by Customer_Name
+order by [Most Profitable] desc
+```
+
+### Question No. 10 Which customer returned items, and what segment do they belong to? 
+``` SQL
+select  Order_Status.Order_ID, [KMS Sql Case Study].Customer_Name, [KMS Sql Case Study].Customer_Segment, Order_Status.Status
+from [KMS Sql Case Study]
+join Order_Status
+on
+[KMS Sql Case Study].Order_ID = Order_Status .Order_ID
+```
+
+
+### Question No. 11  If the delivery truck is the most economical but the slowest shipping method and 
+Express Air is the fastest but the most expensive one, do you think the company 
+appropriately spent shipping costs based on the Order Priority? Explain your answer 
+
+```SQL
+select Order_Priority, Ship_Mode,
+Count(Order_ID) as Total_Delivery,
+ROUND(SUM(Sales - Profit),2) AS EstimatedShippingCost,
+AVG(DATEDIFF(day, [Order_Date], [Ship_Date])) AS AvgShipDays
+from [KMS Sql Case Study]
+group by Order_Priority, Ship_Mode
+```
 
 
 
