@@ -66,6 +66,10 @@ This process involved the exploration of the Data Set provided to Apply the SQL 
 After a detailed breakdown of SQL queries entries, we arrived at the following results:
 
 
-
+## Question No. 1
+------FROM [dbo].[KMS Sql Case Study]
+GROUP BY Product_Category
+ORDER BY Total_Sales DESC
+-------
 
 
